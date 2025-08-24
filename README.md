@@ -39,3 +39,7 @@ Import the JSON workflow into your n8n instance.
 Configure Messenger and Google Sheets credentials.
 
 Update the dataset in Google Sheets as needed.
+
+
+Details of the Workflow:
+Webhook: This node is connect msgr 
