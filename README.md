@@ -2,7 +2,7 @@
 
 This n8n project outlines a sophisticated, human-like AI agent designed for Facebook Messenger. The agent's primary function is to interact with users, understand their inquiries, and provide them with perfect matches for their needs from a connected data source.
 
-** Prerequisites
+**Prerequisites
 
 Before deploying this workflow, you must have a Meta Developer App configured correctly with the Facebook Messenger API. Upon successful setup, you will receive a Page Access Token. This token is critical and will be used in the HTTP Request nodes to authorize communication with the Facebook Graph API.
 
