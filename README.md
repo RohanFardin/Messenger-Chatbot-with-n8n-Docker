@@ -1,28 +1,41 @@
-# Messenger-Chatbot-with-n8n-Docker
+📩 Messenger Chatbot (n8n Project)
 
-This project is built using [n8n](https://n8n.io), a workflow automation tool.
+This project is an automated Messenger chatbot built with n8n
+.
+It replies to customer queries based on our company’s Google Sheet dataset.
 
-## 📌 Overview
-This workflow does:
-- [✅] Task 1 (e.g., fetch data from an API)
-- [✅] Task 2 (e.g., transform the data)
-- [✅] Task 3 (e.g., send a Slack/Telegram message)
+📌 Overview
 
-## 🚀 How to Use
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/username/n8n-my-project.git
-Import the JSON file into your n8n instance:
+✅ Connects Messenger with our company dataset on Google Sheets.
 
-Go to n8n → Workflows → Import from File
+✅ Reads customer messages and matches them against the dataset.
 
-Select workflows/my-workflow.json
+✅ Automatically replies with the correct information.
 
-Add your environment variables (API keys, tokens, etc.).
+✅ Helps reduce manual work and improve response time.
 
-🖼️ Workflow Screenshot
+🚀 How It Works
 
-⚡ Requirements
-n8n version: >=1.x
+A user sends a message on Messenger.
 
-Any required APIs: [list them]
+The workflow checks the dataset in Google Sheets.
+
+If a matching entry is found → the chatbot replies with the corresponding answer.
+
+If no match → a default fallback message is sent.
+
+⚡ Benefits
+
+Faster customer support.
+
+Consistent and accurate replies.
+
+Easy to update answers (just update the Google Sheet).
+
+🔧 Usage
+
+Import the JSON workflow into your n8n instance.
+
+Configure Messenger and Google Sheets credentials.
+
+Update the dataset in Google Sheets as needed.
