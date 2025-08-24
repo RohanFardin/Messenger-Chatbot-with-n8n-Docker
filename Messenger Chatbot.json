@@ -1,5 +1,4 @@
 {
-  "name": "MSGR Chatbot",
   "nodes": [
     {
       "parameters": {
@@ -11,29 +10,12 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1168,
-        384
+        464,
+        1296
       ],
-      "id": "e98ed69c-c490-440d-a0cf-0b54829e904b",
+      "id": "2f5abd9f-c58b-4957-9191-52a0e6f522ae",
       "name": "Webhook",
       "webhookId": "a9fa6299-a5bc-463e-80da-bb14bcea7749"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Edit Fields').item.json.message }}",
-        "options": {
-          "systemMessage": "={\n  \"role\": \"system\",\n  \"instructions\": {\n    \"identity\": \"[Your System Prompt]"\n    }\n  }\n}\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.1,
-      "position": [
-        768,
-        416
-      ],
-      "id": "0ca6bf65-41c4-4240-95ca-5e93286be36b",
-      "name": "Inquiry Agent"
     },
     {
       "parameters": {
@@ -44,44 +26,36 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        272,
-        800
+        1936,
+        1728
       ],
-      "id": "34ca4ccf-7b1d-401b-9831-12f4612d8e2f",
+      "id": "6139fd5b-9349-4d74-b006-c3c3cca8ab45",
       "name": "Simple Memory"
     },
     {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1CBE0GsCkA3kuCNph_M3uisOWtc_GOTNSrclfoAEtNL0",
-          "mode": "list",
-          "cachedResultName": "NAME",
-          "cachedResultUrl": "LINK YOUR GOOGLE SHEET URL"
+          "value": "",
+          "mode": "id"
         },
         "sheetName": {
           "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Apartment details",
-          "cachedResultUrl": "LINK YOUR GOOGLE SHEET URL"
-        },
-        "options": {}
+          "mode": "id",
+          "value": "",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        }
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.6,
       "position": [
-        1168,
-        752
+        2832,
+        1680
       ],
-      "id": "ec1c819d-dbae-4350-93db-f2c7a7412425",
+      "id": "9aae051f-ad77-4c59-980f-adf2efebc119",
       "name": "Apartment Details",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "d6DpyhtsMtRT2XELg",
-          "name": "Google Sheets account"
-        }
-      }
+      "credentials": {}
     },
     {
       "parameters": {
@@ -91,10 +65,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        -576,
-        496
+        1088,
+        1424
       ],
-      "id": "f4b833ce-cf6b-4e23-8dad-f8822781a59f",
+      "id": "bb1b8dfc-4de3-4c44-b3cd-a0528156f3a1",
       "name": "RTW"
     },
     {
@@ -108,10 +82,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        -576,
-        176
+        1088,
+        1104
       ],
-      "id": "eb67387b-818c-4807-bb64-04f36bd6dac4",
+      "id": "bcc1b3fd-99e2-4b47-bd8d-a08f324ff6f1",
       "name": "RTW-1"
     },
     {
@@ -124,10 +98,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        -576,
-        352
+        1088,
+        1280
       ],
-      "id": "a433b37d-94b4-496b-b5a0-27ce35af35f5",
+      "id": "02588452-9d44-4836-8467-045edca493d9",
       "name": "RTW-2"
     },
     {
@@ -159,16 +133,16 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -352,
-        496
+        1312,
+        1424
       ],
-      "id": "e417ccb9-33b7-4518-8e1f-1aa545b883d2",
+      "id": "cc6d2d89-1412-4737-a457-01c6d31b3500",
       "name": "Edit Fields"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=PAGE_TOKEN",
+        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_HERE",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Edit Fields').item.json.sender_id }}\"\n  },\n  \"sender_action\": \"mark_seen\"\n}\n",
@@ -177,16 +151,16 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        320,
-        416
+        1984,
+        1344
       ],
-      "id": "120a006e-e981-4550-99ac-af3e0f9b9ec9",
+      "id": "feaa970f-7cbd-426c-9a1d-86cf6818b410",
       "name": "HTTP MSG Seen"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
+        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_HERE",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Edit Fields').item.json.sender_id }}\"\n  },\n  \"sender_action\": \"typing_on\"\n}\n",
@@ -195,77 +169,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        560,
-        416
+        2224,
+        1344
       ],
-      "id": "74ed7762-2e34-48f5-b009-685b5a120424",
+      "id": "6ead3532-f7af-4549-ad47-39511ce80ddf",
       "name": "HTTP MSG Typing On"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Edit Fields').item.json.sender_id }}\"\n  },\n  \"sender_action\": \"mark_seen\"\n}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        320,
-        128
-      ],
-      "id": "84063d5d-d0c1-4201-b1e3-701c908edf31",
-      "name": "HTTP MSG Seen1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Edit Fields').item.json.sender_id }}\"\n  },\n  \"sender_action\": \"typing_on\"\n}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        560,
-        128
-      ],
-      "id": "5bfe1ddc-80a7-4344-84e9-f6c2b5b3996c",
-      "name": "HTTP MSG Typing On1"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Edit Fields').item.json.message }}",
-        "options": {
-          "systemMessage": "SYSTEN_PROMPT_HERE"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.1,
-      "position": [
-        768,
-        128
-      ],
-      "id": "bcc8a14b-7eb0-430c-8aa5-83ce0df58492",
-      "name": "Normal Interation"
-    },
-    {
-      "parameters": {
-        "jsCode": "// Get the string from the field \"output\"\nconst content = $json[\"output\"];\n\n// Parse JSON string to object\nconst parsed = JSON.parse(content);\n\n// Return parsed object so IF node can use it\nreturn [{ json: parsed }];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -176,
-        272
-      ],
-      "id": "2e09c192-46de-4ef3-86c6-a96c97b2f73d",
-      "name": "Code"
     },
     {
       "parameters": {
@@ -280,10 +188,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -208,
-        800
+        1456,
+        1728
       ],
-      "id": "8b73099f-1ee7-4528-82c2-28aaa28a80c9",
+      "id": "731f0d10-0606-49c0-97af-52f830fea353",
       "name": "OpenAI 4.1 Nano",
       "credentials": {
         "openAiApi": {
@@ -312,10 +220,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        928,
-        768
+        2592,
+        1696
       ],
-      "id": "39f319a7-9432-496d-9032-5c1e36606ff7",
+      "id": "e152fe5c-6dfe-4a9a-9659-289bdc3e6e3b",
       "name": "OpenAI 4.1 Mini",
       "credentials": {
         "openAiApi": {
@@ -329,61 +237,17 @@
         "promptType": "define",
         "text": "={{ $('Edit Fields').item.json.message }}",
         "options": {
-          "systemMessage": "=SYSTEM_PROMPT."
+          "systemMessage": "=[YOUR SYSTEM PROMPT, CONVERTING INTO EITHER NORMAL CONVERSATION OR AI AGENT RELATED QUESTIONS]"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        -96,
-        496
+        1568,
+        1424
       ],
-      "id": "bd39b6cd-5c95-41c8-bec9-7366727757a0",
+      "id": "43fec2c3-8cbe-42fe-a34e-fffba3958bca",
       "name": "Classify"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "01b2720e-383c-4b3b-9288-843966051275",
-              "leftValue": "={{ $json.query[\"hub.mode\"] }}",
-              "rightValue": "subscribe",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "8f92c0f2-0b46-4f3a-88a8-fc7216eef8bb",
-              "leftValue": "={{ $json.query[\"hub.verify_token\"] }}",
-              "rightValue": "231",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -816,
-        272
-      ],
-      "id": "557ad6ff-61bc-4d42-af31-d99b8b85432a",
-      "name": "GET -- > IF"
     },
     {
       "parameters": {
@@ -431,10 +295,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -816,
-        512
+        848,
+        1440
       ],
-      "id": "83b62f0e-cc4b-4abc-83b0-6317eb055c54",
+      "id": "1677eb75-3b97-4470-95d3-1abd218d69bc",
       "name": "POST --> IF"
     },
     {
@@ -449,7 +313,7 @@
           "conditions": [
             {
               "id": "2529e188-e3c3-4422-bff0-2311a2950360",
-              "leftValue": "={{ $('Code').item.json.category }}",
+              "leftValue": "={{ $('Code1').item.json.category }}",
               "rightValue": "conversational",
               "operator": {
                 "type": "string",
@@ -475,16 +339,16 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        32,
-        272
+        1696,
+        1200
       ],
-      "id": "d511d07d-4998-4bba-b804-90d353b8ea39",
+      "id": "c3ea8488-17e3-4937-9cbb-e3331daf3b11",
       "name": "Conversation or Apartment"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
+        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_HERE",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{\n{\nrecipient: {\nid: $('Edit Fields').item.json.sender_id\n},\nmessaging_type: \"RESPONSE\",\nmessage: {\ntext: $json[\"output\"]\n}\n}\n}}",
@@ -493,62 +357,35 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1184,
-        416
+        2848,
+        1344
       ],
-      "id": "ec787475-ce1d-4613-943a-2904182f33f6",
+      "id": "37a641e0-3d25-4076-b01c-dcaca03df24f",
       "name": "Send Apartment MSG"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{\n{\nrecipient: {\nid: $('Edit Fields').item.json.sender_id\n},\nmessaging_type: \"RESPONSE\",\nmessage: {\ntext: $json[\"output\"]\n}\n}\n}}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1184,
-        128
-      ],
-      "id": "4c47e2bb-621c-4ef7-9ff0-5e97d1d2c1a5",
-      "name": "Send Conversational MSG"
     },
     {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1CBE0GsCkA3kuCNph_M3uisOWtc_GOTNSrclfoAEtNL0",
-          "mode": "list",
-          "cachedResultName": "NAME.",
-          "cachedResultUrl": "LINK_HERE"
+          "mode": "id",
+          "value": ""
         },
         "sheetName": {
           "__rl": true,
-          "value": 1675330251,
+          "value": "",
           "mode": "list",
-          "cachedResultName": "FAQ-Test",
-          "cachedResultUrl": "LINK_HERE"
-        },
-        "options": {}
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        }
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
       "position": [
-        1024,
-        304
+        2688,
+        1232
       ],
-      "id": "31dcac8c-905f-47e3-81ad-bedae4ac316b",
-      "name": "FAQ",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "d6DpyhtsMtT2XELg",
-          "name": "Google Sheets account"
-        }
-      }
+      "id": "809fa486-b9c1-43f0-87d8-6dda97ed3a15",
+      "name": "FAQ"
     },
     {
       "parameters": {
@@ -607,10 +444,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1008,
-        528
+        656,
+        1456
       ],
-      "id": "dae9ecc1-5fb6-4fb6-8d4c-665583ce0ad0",
+      "id": "78b06d6e-053f-4d17-bd02-a33d9fcdf6bc",
       "name": "Switch"
     },
     {
@@ -642,16 +479,73 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -816,
-        688
+        848,
+        1616
       ],
-      "id": "943cfb9d-c6d5-47a0-bf16-0fcd62891c37",
+      "id": "b31158a9-3799-42aa-839f-53724291dea9",
       "name": "Image Edit Fields"
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "01b2720e-383c-4b3b-9288-843966051275",
+              "leftValue": "={{ $json.query[\"hub.mode\"] }}",
+              "rightValue": "subscribe",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "8f92c0f2-0b46-4f3a-88a8-fc7216eef8bb",
+              "leftValue": "={{ $json.query[\"hub.verify_token\"] }}",
+              "rightValue": "231",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        848,
+        1200
+      ],
+      "id": "b74f0a93-b0cb-45a2-8042-ae38c7078897",
+      "name": "GET --> IF"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the string from the field \"output\"\nconst content = $json[\"output\"];\n\n// Parse JSON string to object\nconst parsed = JSON.parse(content);\n\n// Return parsed object so IF node can use it\nreturn [{ json: parsed }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1488,
+        1200
+      ],
+      "id": "be683427-80c3-4f93-8190-ff580d8205df",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
         "method": "POST",
-        "url": "=https://graph.facebook.com/v23.0/{{ $('Image Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_ID",
+        "url": "=https://graph.facebook.com/v23.0/{{ $('Image Edit Fields').item.json.receiver_id }}\n/messages?access_token=TOKEN_HERE",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{\n{\nrecipient: {\nid: $('Image Edit Fields').item.json.sender_id\n},\nmessaging_type: \"RESPONSE\",\nmessage: {\ntext: \"My apologies sir, but it seems I'm unable to view the image you sent. Could you please tell me which project you are interested in?\"\n}\n}\n}}",
@@ -660,20 +554,36 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -576,
-        688
+        1088,
+        1616
       ],
-      "id": "2ebcff04-9ce5-42c4-8b59-36b8ab753ab2",
-      "name": "Send Image MSG"
+      "id": "30126ba8-022b-4d9a-b513-1b8a4d6bcb08",
+      "name": "IMAGE doesn't support"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Edit Fields').item.json.message }}",
+        "options": {
+          "systemMessage": "=[APARMTNET RELATED QUESTION]"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        2432,
+        1344
+      ],
+      "id": "d40dbe77-39b3-43b5-a208-3a817a6bbc60",
+      "name": "Apartment Agent"
     }
   ],
-  "pinData": {},
   "connections": {
     "Webhook": {
       "main": [
         [
           {
-            "node": "GET -- > IF",
+            "node": "GET --> IF",
             "type": "main",
             "index": 0
           }
@@ -687,27 +597,11 @@
         ]
       ]
     },
-    "Agent": {
-      "main": [
-        [
-          {
-            "node": "Send Apartment MSG",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Simple Memory": {
       "ai_memory": [
         [
           {
-            "node": "Agent",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "Normal Interation",
+            "node": "Apartment Agent",
             "type": "ai_memory",
             "index": 0
           },
@@ -723,7 +617,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent",
+            "node": "Apartment Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -767,51 +661,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP MSG Seen1": {
-      "main": [
-        [
-          {
-            "node": "HTTP MSG Typing On1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP MSG Typing On1": {
-      "main": [
-        [
-          {
-            "node": "Normal Interation",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Normal Interation": {
-      "main": [
-        [
-          {
-            "node": "Send Conversational MSG",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "Conversation or Apartment",
+            "node": "Apartment Agent",
             "type": "main",
             "index": 0
           }
@@ -833,12 +683,7 @@
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Normal Interation",
+            "node": "Apartment Agent",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -849,25 +694,7 @@
       "main": [
         [
           {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "GET -- > IF": {
-      "main": [
-        [
-          {
-            "node": "RTW-1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "RTW-2",
+            "node": "Code1",
             "type": "main",
             "index": 0
           }
@@ -887,13 +714,7 @@
     },
     "Conversation or Apartment": {
       "main": [
-        [
-          {
-            "node": "HTTP MSG Seen1",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "HTTP MSG Seen",
@@ -905,13 +726,7 @@
     },
     "FAQ": {
       "ai_tool": [
-        [
-          {
-            "node": "Normal Interation",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Switch": {
@@ -936,7 +751,47 @@
       "main": [
         [
           {
-            "node": "Send Image MSG",
+            "node": "IMAGE doesn't support",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET --> IF": {
+      "main": [
+        [
+          {
+            "node": "RTW-1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RTW-2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Conversation or Apartment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apartment Agent": {
+      "main": [
+        [
+          {
+            "node": "Send Apartment MSG",
             "type": "main",
             "index": 0
           }
@@ -944,17 +799,9 @@
       ]
     }
   },
-  "active": true,
-  "settings": {
-    "executionOrder": "v1",
-    "timezone": "Asia/Dhaka",
-    "callerPolicy": "workflowsFromSameOwner"
-  },
-  "versionId": "2db01b08-b890-45f8-a04b-efb657a74c35",
+  "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e499de3352f70bb66eba0ac4ec4e8e7417a650048f1b64c241d4945978537bd4"
-  },
-  "id": "awtScWeNHY1Rcm8x",
-  "tags": []
+  }
 }
