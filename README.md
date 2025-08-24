@@ -89,3 +89,6 @@ This workflow is composed of several interconnected nodes, each with a specific 
 *   **`Send Apartment MSG` / `Send Conversational MSG`**
     *   These are the final nodes in the workflow.
     *   Depending on the path taken, the appropriate node takes the generated response from its respective AI agent and sends it as a message to the user via the Facebook Graph API.
+
+## Hosting
+for Hosting we can use official n8n cloud or we can use local. Since I used on my own laptop. I used `ngrok` for the URL and used `Docker` to isolated and portable the n8n. 
